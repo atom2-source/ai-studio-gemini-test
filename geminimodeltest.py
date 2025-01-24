@@ -161,38 +161,11 @@ class GeminiOneShotWorker(QThread):
 
     def build_prompt(self, input_text):
         few_shot_examples = (
-            "Example parts list:\n"
-            "- Air Guide (for 45 psi) [1011222]\n" 
-            "- Ball Bearing, part number 1021305\n"
-            "- Cover Screw with item 2 (p/n 1054096)\n\n"
-            "Expected Output:\n"
-            "[\n"
-            "  {\n"
-            '    "part_name": "Air Guide (for 45 psi)",\n'
-            '    "part_number": "1011222"\n'
-            "  },\n"
-            "  {\n"
-            '    "part_name": "Ball Bearing",\n'
-            '    "part_number": "1021305"\n'
-            "  },\n"
-            "  {\n"
-            '    "part_name": "Cover Screw with item 2",\n'
-            '    "part_number": "1054096"\n'
-            "  }\n"
-            "]\n"
+            
         )
 
         prompt = (
-            "You are a technical documentation parser for manufacturing parts. Extract orderable parts and their numbers.\n\n"
-            f"{few_shot_examples}\n"
-            "Instructions:\n"
-            "1. Extract 7-8 digit part numbers (format: 1XXXXXX or XXXXXXX)\n"
-            "2. Keep descriptive modifiers like 'with item X' and 'for XX psi'\n"
-            "3. Preserve exact part names including technical terms\n"
-            "4. Include assemblies and their full descriptions\n"
-            "5. Maintain part number format exactly as shown\n"
-            "6. Return JSON array with part_name and part_number fields\n\n"
-            f"Text to analyze:\n{input_text}"
+            
         )
         return prompt
 
